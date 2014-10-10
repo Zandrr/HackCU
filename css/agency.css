@@ -499,7 +499,8 @@ aside.clients img {
 }
 section#contact {
   background-color: #222222;
-  background-image: url('../img/map-image.png');
+  background-image: url('../img/brandLogos/background.jpg');
+  background-size: 1680px;
   background-position: center;
   background-repeat: no-repeat;
 }
