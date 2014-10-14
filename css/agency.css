@@ -412,7 +412,7 @@ section h3.section-subheading {
     left: 50%;
   }
   .timeline > li {
-    margin-bottom: 100px;
+    margin-bottom: -25px;
     min-height: 100px;
   }
   .timeline > li .timeline-panel {
