@@ -141,6 +141,19 @@ fieldset[disabled] .btn-xl.active {
   color: #fed136;
   background-color: #ffffff;
 }
+#logo {
+  width: 100%;
+  height: 250px;
+  background-image: url("file:///Users/alexcampbell/projects/CUHack/img/brandLogos/HackCU.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  display: block;
+}
+@media all and (max-width: 600px) {
+  #logo {
+    background-image: url("file:///Users/alexcampbell/projects/CUHack/img/brandLogos/HackCUMobile.png");
+  }
+}
 .navbar-default {
   background-color: #222222;
   border-color: transparent;
@@ -268,6 +281,9 @@ header .intro-text .intro-heading {
     font-size: 75px;
     line-height: 75px;
     margin-bottom: 50px;
+  }
+  img[data-src-small] {
+    content: attr(data-src-small, url);
   }
 }
 section {
