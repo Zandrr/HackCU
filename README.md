@@ -6,3 +6,13 @@ If you are a new contributor or the username for your commits is identified as `
 
     git config --global user.name "[insert github username]"
     git config --global user.email "[insert github attributable email address]"
+
+In addition, all links should contain the HTML target attribute "_blank". <br>
+Example:
+Before:
+
+    <a href="https://www.facebook.com/letsHackCU" >Visit our facebook</a>
+    
+After:
+    
+    <a href="https://www.facebook.com/letsHackCU" target="_blank">Visit our facebook</a>
