@@ -256,7 +256,7 @@ fieldset[disabled] .btn-lg.active {
 @media (min-width: 768px) {
   .navbar-default {
     background-color: transparent;
-    padding: 25px 0;
+    padding: 10px 0;
     -webkit-transition: padding 0.3s;
     -moz-transition: padding 0.3s;
     transition: padding 0.3s;
@@ -315,7 +315,7 @@ header h3 {
 }
 @media (min-width: 768px) {
   header .intro-text {
-    padding-top: 300px;
+    padding-top: 200px;
     padding-bottom: 200px;
   }
   header .intro-text .intro-lead-in {
