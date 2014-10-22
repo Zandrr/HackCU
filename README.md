@@ -6,13 +6,18 @@ If you are a new contributor or the username for your commits is identified as `
 
     git config --global user.name "[insert github username]"
     git config --global user.email "[insert github attributable email address]"
-
+##Style Guidelines
 In addition, all links should contain the HTML target attribute "_blank". <br>
 Example:
 Before:
 
-    <a href="https://www.facebook.com/letsHackCU" >Visit our facebook</a>
+    <a href="https://www.facebook.com/letsHackCU">Visit our facebook</a>
     
 After:
     
     <a href="https://www.facebook.com/letsHackCU" target="_blank">Visit our facebook</a>
+    
+##Show unique traffic
+The following line counts the amount of unique IP's apache has served. As of 10/22, we have 62!
+
+    cat /var/log/apache2/access.log | cut -d" " -f1 | sort -n | uniq | wc -l
