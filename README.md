@@ -1,6 +1,6 @@
 HackCU
 ======
-Welcome to the game changer. We are here to build a hacking culture at the University of Colorado, Boulder. Our first national hackathon is coming on February 20th, 2015. Signup and more info at [CUHack.me](http://cuhack.me/)
+Bolder than the rest. We are here to build a hacking culture at the University of Colorado, Boulder. Our first national hackathon is coming on February 20th, 2015. Signup and more info at [HackCU.org](http://hackcu.org/)
 ##Contributor Setup
 If you are a new contributor or the username for your commits is identified as ```ubuntu```, perform the following command from the ```HackCU``` directory in the AWS instance in order to attribute your commits to your username:
 
