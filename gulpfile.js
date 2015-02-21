@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
+var serve = require('gulp-serve');
 
 gulp.task('images', function () {
     return gulp.src('img/**/*')
@@ -11,3 +12,5 @@ gulp.task('images', function () {
         }))
         .pipe(gulp.dest('dist/img'));
 });
+
+gulp.task('serve', serve(__dirname));

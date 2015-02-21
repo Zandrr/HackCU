@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Zandrr/HackCU",
   "devDependencies": {
     "gulp-imagemin": "^2.2.0",
+    "gulp-serve": "^0.3.0",
     "imagemin-pngquant": "^4.0.0"
   }
 }
