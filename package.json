@@ -1,0 +1,23 @@
+{
+  "name": "HackCU",
+  "version": "1.0.0",
+  "description": "Website for HackCU hackathon in Boulder, CO.",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Zandrr/HackCU"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zandrr/HackCU/issues"
+  },
+  "homepage": "https://github.com/Zandrr/HackCU",
+  "devDependencies": {
+    "gulp-imagemin": "^2.2.0",
+    "imagemin-pngquant": "^4.0.0"
+  }
+}
