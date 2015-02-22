@@ -46,9 +46,22 @@ gulp.task('sitemap.xml', function() {
    gulp.src('sitemap.xml').pipe(gulp.dest('dist'));
 });
 
-gulp.task('serve', serve(__dirname));
+gulp.task('serve', serve({
+    root: __dirname,
+    port: 8000
+}));
 
-gulp.task('serve:dist', serve('dist'));
+gulp.task('serve:dist', serve({
+    root: 'dist',
+    port: 8000
+}));
+
+gulp.task('default', function(){
+  var options = {
+    url: 'http://localhost:3000'
+  };
+  gulp.src('./index.html')
+});
 
 gulp.task('clean', function (cb) { del(['dist'], cb); });
 
