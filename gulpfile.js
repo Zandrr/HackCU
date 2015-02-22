@@ -30,7 +30,13 @@ gulp.task('img:resize:judges', ['img:compress'], function() {
     .pipe(gulp.dest('.tmp/img/judges'));
 });
 
-gulp.task('img', ['img:resize:judges'], function() {
+gulp.task('img:resize:header', ['img:compress'], function() {
+  return gulp.src('.tmp/img/header-bg.png')
+    .pipe(imageResize({width: 1500}))
+    .pipe(gulp.dest('.tmp/img'));
+});
+
+gulp.task('img', ['img:resize:header', 'img:resize:judges'], function() {
   return gulp.src('.tmp/img/**/*')
     .pipe(gulp.dest('dist/img'));
 });
