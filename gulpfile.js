@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
 var serve = require('gulp-serve');
-var del = require('del');
+var rimraf = require('rimraf');
 
 gulp.task('css', function() {
    gulp.src('css/**/*').pipe(gulp.dest('dist/css'));
@@ -63,7 +63,7 @@ gulp.task('default', function(){
   gulp.src('./index.html')
 });
 
-gulp.task('clean', function (cb) { del(['dist'], cb); });
+gulp.task('clean', function (cb) { rimraf('dist', cb); });
 
 gulp.task('build', [
     'css',

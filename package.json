@@ -17,10 +17,10 @@
   },
   "homepage": "https://github.com/Zandrr/HackCU",
   "devDependencies": {
-    "del": "^1.1.1",
     "gulp": "^3.8.11",
     "gulp-imagemin": "^2.2.0",
     "gulp-serve": "^0.3.0",
-    "imagemin-pngquant": "^4.0.0"
+    "imagemin-pngquant": "^4.0.0",
+    "rimraf": "^2.2.8"
   }
 }
