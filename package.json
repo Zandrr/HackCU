@@ -17,10 +17,12 @@
   },
   "homepage": "https://github.com/Zandrr/HackCU",
   "devDependencies": {
+    "concurrent-transform": "^1.0.0",
     "gulp": "^3.8.11",
+    "gulp-clean": "^0.3.1",
+    "gulp-image-resize": "^0.6.0",
     "gulp-imagemin": "^2.2.0",
     "gulp-serve": "^0.3.0",
-    "imagemin-pngquant": "^4.0.0",
-    "rimraf": "^2.2.8"
+    "imagemin-pngquant": "^4.0.0"
   }
 }

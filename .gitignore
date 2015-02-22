@@ -35,3 +35,6 @@ npm-debug.log
 
 # Distribution
 dist
+
+# Tmp
+.tmp
