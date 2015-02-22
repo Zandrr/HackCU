@@ -7,7 +7,9 @@ Building a hacking culture at the University of Colorado, Boulder. Our first nat
 
 1. Git it: `git clone https://github.com/Zandrr/HackCU HackCU && cd $_`
 1. Make sure you have node.js installed
-1. Install dependencies: `npm install`
+1. Install dependencies:
+  - Install `imagemagick` and `graphicsmagick`
+  - `npm install`
 
 ## Style Guidelines
 
