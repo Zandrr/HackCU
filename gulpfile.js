@@ -12,10 +12,6 @@ gulp.task('fonts', function() {
    gulp.src('fonts/**/*').pipe(gulp.dest('dist/fonts'));
 });
 
-gulp.task('font-awesome-4.1.0', function() {
-   gulp.src('font-awesome-4.1.0/**/*').pipe(gulp.dest('dist/font-awesome-4.1.0'));
-});
-
 gulp.task('html', function() {
    gulp.src('html/**/*').pipe(gulp.dest('dist/html'));
 });
@@ -58,7 +54,6 @@ gulp.task('clean', function (cb) { del(['dist'], cb); });
 
 gulp.task('build', [
     'css',
-    'font-awesome-4.1.0',
     'fonts',
     'html',
     'img',
