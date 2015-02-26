@@ -6,19 +6,28 @@ var imageResize = require('gulp-image-resize');
 var clean = require('gulp-clean');
 var parallel = require('concurrent-transform');
 var os = require('os');
+var merge = require('merge-stream');
 
 gulp.task('copy', function() {
   gulp.src('{css,html,fonts,js,mail}/**/*').pipe(gulp.dest('dist'));
 });
 
 gulp.task('img:compress', function() {
-  return gulp.src('img/**/*')
+  var compressed = gulp.src('img/**/*.{jpg,jpeg,png,gif}')
     .pipe(imagemin({
       progressive: true,
-      svgoPlugins: [{removeViewBox: false}],
+      svgoPlugins: [
+        {removeViewBox: false},
+        {removeUselessStrokeAndFill: false},
+        {removeEmptyAttrs: false}
+      ],
       use: [pngquant()]
     }))
     .pipe(gulp.dest('.tmp/img'));
+
+  var uncompressed = gulp.src('img/**/*.svg').pipe(gulp.dest('.tmp/img'));
+
+  return merge(compressed, uncompressed);
 });
 
 gulp.task('img:resize:judges', ['img:compress'], function() {
