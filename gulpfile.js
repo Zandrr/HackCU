@@ -56,7 +56,7 @@ gulp.task('publish', function() {
 
   return gulp.src('dist/**/*')
     .pipe(revall())
-    .pipe(awspublish.gzip({ext: '.gz'}))
+    .pipe(awspublish.gzip())
     .pipe(parallel(publisher.publish(), os.cpus().length))
     .pipe(publisher.cache())
     .pipe(publisher.sync())
