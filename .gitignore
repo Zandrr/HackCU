@@ -38,3 +38,6 @@ dist
 
 # Tmp
 .tmp
+
+# AWS
+.awspublish-hackcu
