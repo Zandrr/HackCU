@@ -49,20 +49,17 @@ gulp.task('publish', function() {
     "key": process.env.AWS_ACCESS_KEY,
     "secret": process.env.AWS_SECRET_KEY,
     "bucket": "hackcu",
-    "distributionId": "EW2F8CPNGL03T"
+    "distributionId": "E2EHAFBXJFNUF"
   };
 
   var publisher = awspublish.create(aws);
-  var headers = {
-    'Cache-Control': 'max-age=315360000, no-transform, public',
-    'x-amz-acl': 'public-read'
-  };
 
   return gulp.src('dist/**/*')
     .pipe(revall())
-    .pipe(awspublish.gzip())
-    .pipe(publisher.publish(headers))
+    .pipe(awspublish.gzip({ext: '.gz'}))
+    .pipe(parallel(publisher.publish(), os.cpus().length))
     .pipe(publisher.cache())
+    .pipe(publisher.sync())
     .pipe(awspublish.reporter())
     .pipe(cloudfront(aws));
 });

@@ -25,7 +25,7 @@
     "gulp-cloudfront": "0.0.14",
     "gulp-image-resize": "^0.6.0",
     "gulp-imagemin": "^2.2.0",
-    "gulp-rev-all": "^0.7.6",
+    "gulp-rev-all": "git://github.com/haggholm/gulp-rev-all",
     "gulp-serve": "^0.3.0",
     "imagemin-pngquant": "^4.0.0"
   }
