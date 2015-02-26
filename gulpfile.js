@@ -6,6 +6,9 @@ var imageResize = require('gulp-image-resize');
 var clean = require('gulp-clean');
 var parallel = require('concurrent-transform');
 var os = require('os');
+var revall = require('gulp-rev-all');
+var awspublish = require('gulp-awspublish');
+var cloudfront = require("gulp-cloudfront");
 
 gulp.task('copy', function() {
   gulp.src('{css,html,fonts,js,mail}/**/*').pipe(gulp.dest('dist'));
@@ -39,6 +42,29 @@ gulp.task('img:resize:header', ['img:compress'], function() {
 gulp.task('img', ['img:resize:header', 'img:resize:judges'], function() {
   return gulp.src('.tmp/img/**/*')
     .pipe(gulp.dest('dist/img'));
+});
+
+gulp.task('publish', function() {
+  var aws = {
+    "key": process.env.AWS_ACCESS_KEY,
+    "secret": process.env.AWS_SECRET_KEY,
+    "bucket": "hackcu",
+    "distributionId": "EW2F8CPNGL03T"
+  };
+
+  var publisher = awspublish.create(aws);
+  var headers = {
+    'Cache-Control': 'max-age=315360000, no-transform, public',
+    'x-amz-acl': 'public-read'
+  };
+
+  return gulp.src('dist/**/*')
+    .pipe(revall())
+    .pipe(awspublish.gzip())
+    .pipe(publisher.publish(headers))
+    .pipe(publisher.cache())
+    .pipe(awspublish.reporter())
+    .pipe(cloudfront(aws));
 });
 
 gulp.task('root', function() {

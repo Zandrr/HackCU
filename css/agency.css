@@ -280,7 +280,7 @@ fieldset[disabled] .btn-lg.active {
   }
 }
 header {
-  background-image: url('../img/header-bg.png');
+  background-image: url('./../img/header-bg.png');
   background-repeat: none;
   background-attachment: scroll;
   background-position: center center;
@@ -563,7 +563,7 @@ aside.clients img {
 }
 section#contact {
   background-color: #222222;
-  background-image: url('../img/brandLogos/background.jpg');
+  background-image: url('./../img/brandLogos/background.jpg');
   background-size: 1680px;
   background-position: center;
   background-repeat: no-repeat;
