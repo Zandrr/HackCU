@@ -61,12 +61,14 @@ gulp.task('publish', function() {
     "distributionId": "E2EHAFBXJFNUF"
   };
 
+  var headers = {"x-amz-acl" : "public-read"}
+
   var publisher = awspublish.create(aws);
 
   return gulp.src('dist/**/*')
     .pipe(revall())
     .pipe(awspublish.gzip())
-    .pipe(parallel(publisher.publish(), os.cpus().length))
+    .pipe(parallel(publisher.publish(headers), os.cpus().length))
     .pipe(publisher.cache())
     .pipe(publisher.sync())
     .pipe(awspublish.reporter())
