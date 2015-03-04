@@ -29,7 +29,7 @@ gulp.task('img:compress', function() {
     }))
     .pipe(gulp.dest('.tmp/img'));
 
-  var uncompressed = gulp.src('img/**/*.svg').pipe(gulp.dest('.tmp/img'));
+  var uncompressed = gulp.src('img/**/*.{svg,ico}').pipe(gulp.dest('.tmp/img'));
 
   return merge(compressed, uncompressed);
 });
