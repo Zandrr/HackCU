@@ -18,7 +18,7 @@ gulp.task('copy', function() {
 gulp.task('img:compress', function() {
   var compressed = gulp.src('img/**/*.{jpg,jpeg,png,gif}')
     .pipe(imagemin({
-      optimizationLevel: 7,
+      optimizationLevel: 5,
       progressive: true,
       svgoPlugins: [
         {removeViewBox: false},
@@ -34,8 +34,15 @@ gulp.task('img:compress', function() {
   return merge(compressed, uncompressed);
 });
 
-gulp.task('img:resize:judges', ['img:compress'], function() {
-  return gulp.src('.tmp/img/judges/*')
+gulp.task('img:resize:other', ['img:compress'], function() {
+  gulp.src('.tmp/img/logos/**/*')
+    .pipe(parallel(
+      imageResize({width: 250}),
+      os.cpus().length
+    ))
+    .pipe(gulp.dest('.tmp/img/logos'));
+
+  gulp.src('.tmp/img/judges/**/*')
     .pipe(parallel(
       imageResize({width: 250}),
       os.cpus().length
@@ -49,7 +56,7 @@ gulp.task('img:resize:header', ['img:compress'], function() {
     .pipe(gulp.dest('.tmp/img'));
 });
 
-gulp.task('img', ['img:resize:header', 'img:resize:judges'], function() {
+gulp.task('img', ['img:resize:header', 'img:resize:other'], function() {
   return gulp.src('.tmp/img/**/*')
     .pipe(gulp.dest('dist/img'));
 });
