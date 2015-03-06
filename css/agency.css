@@ -188,14 +188,10 @@ fieldset[disabled] .btn-lg.active {
   color: #fed136;
   background-color: #ffffff;
 }
-#logo {
-  width: 100%;
-  height: 175px;
-  background-image: url("../img/Logo.svg");
-  background-repeat: no-repeat;
-  background-position: 50.5% 50%;
-  display: block;
-  z-index: 1000;
+.jumbo {
+  max-width: 70%;
+  margin: 0 auto;
+  padding-bottom: 50px;
 }
 .navbar-default {
   background-color: #222222;
