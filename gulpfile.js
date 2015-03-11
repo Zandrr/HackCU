@@ -6,23 +6,43 @@ var imageResize = require('gulp-image-resize');
 var clean = require('gulp-clean');
 var parallel = require('concurrent-transform');
 var os = require('os');
+var merge = require('merge-stream');
+var revall = require('gulp-rev-all');
+var awspublish = require('gulp-awspublish');
+var cloudfront = require("gulp-cloudfront");
 
 gulp.task('copy', function() {
   gulp.src('{css,html,fonts,js,mail}/**/*').pipe(gulp.dest('dist'));
 });
 
 gulp.task('img:compress', function() {
-  return gulp.src('img/**/*')
+  var compressed = gulp.src('img/**/*.{jpg,jpeg,png,gif}')
     .pipe(imagemin({
+      optimizationLevel: 5,
       progressive: true,
-      svgoPlugins: [{removeViewBox: false}],
+      svgoPlugins: [
+        {removeViewBox: false},
+        {removeUselessStrokeAndFill: false},
+        {removeEmptyAttrs: false}
+      ],
       use: [pngquant()]
     }))
     .pipe(gulp.dest('.tmp/img'));
+
+  var uncompressed = gulp.src('img/**/*.{svg,ico}').pipe(gulp.dest('.tmp/img'));
+
+  return merge(compressed, uncompressed);
 });
 
-gulp.task('img:resize:judges', ['img:compress'], function() {
-  return gulp.src('.tmp/img/judges/*')
+gulp.task('img:resize:other', ['img:compress'], function() {
+  gulp.src('.tmp/img/logos/**/*')
+    .pipe(parallel(
+      imageResize({width: 250}),
+      os.cpus().length
+    ))
+    .pipe(gulp.dest('.tmp/img/logos'));
+
+  gulp.src('.tmp/img/judges/**/*')
     .pipe(parallel(
       imageResize({width: 250}),
       os.cpus().length
@@ -32,13 +52,35 @@ gulp.task('img:resize:judges', ['img:compress'], function() {
 
 gulp.task('img:resize:header', ['img:compress'], function() {
   return gulp.src('.tmp/img/header-bg.png')
-    .pipe(imageResize({width: 1500}))
+    .pipe(imageResize({width: 2000}))
     .pipe(gulp.dest('.tmp/img'));
 });
 
-gulp.task('img', ['img:resize:header', 'img:resize:judges'], function() {
+gulp.task('img', ['img:resize:header', 'img:resize:other'], function() {
   return gulp.src('.tmp/img/**/*')
     .pipe(gulp.dest('dist/img'));
+});
+
+gulp.task('publish', function() {
+  var aws = {
+    "key": process.env.AWS_ACCESS_KEY,
+    "secret": process.env.AWS_SECRET_KEY,
+    "bucket": "hackcu",
+    "distributionId": "E2EHAFBXJFNUF"
+  };
+
+  var headers = {"x-amz-acl" : "public-read"}
+
+  var publisher = awspublish.create(aws);
+
+  return gulp.src('dist/**/*')
+    .pipe(revall())
+    .pipe(awspublish.gzip())
+    .pipe(parallel(publisher.publish(headers), os.cpus().length))
+    .pipe(publisher.cache())
+    .pipe(publisher.sync())
+    .pipe(awspublish.reporter())
+    .pipe(cloudfront(aws));
 });
 
 gulp.task('root', function() {

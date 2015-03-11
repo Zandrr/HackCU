@@ -24,3 +24,12 @@ Before:
 After:
 
     <a href="https://www.facebook.com/letsHackCU" target="_blank">Visit our facebook</a>
+
+## Deployment
+
+1. Check the site to make sure that everything looks OK. Give it about 30 seconds to build.
+  - `gulp serve:dist`
+1. Make sure your `AWS_ACCESS_KEY` and `AWS_SECRET_KEY` environment variables
+   are set. Hit up @ianks for those keys.
+1. Publish the site to production:
+  - `gulp publish`

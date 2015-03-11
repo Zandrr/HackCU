@@ -188,19 +188,10 @@ fieldset[disabled] .btn-lg.active {
   color: #fed136;
   background-color: #ffffff;
 }
-#logo {
-  width: 100%;
-  height: 175px;
-  background-image: url("../img/brandLogos/HackCU.png");
-  background-repeat: no-repeat;
-  background-position: 50% 60%;
-  display: block;
-  z-index: 1000;
-}
-@media all and (max-width: 600px) {
-  #logo {
-    background-image: url("../img/brandLogos/HackCUMobile.png");
-  }
+.jumbo {
+  max-width: 70%;
+  margin: 0 auto;
+  padding-bottom: 50px;
 }
 .navbar-default {
   background-color: #222222;
@@ -280,7 +271,7 @@ fieldset[disabled] .btn-lg.active {
   }
 }
 header {
-  background-image: url('../img/header-bg.png');
+  background-image: url('./../img/header-bg.png');
   background-repeat: none;
   background-attachment: scroll;
   background-position: center center;
@@ -292,7 +283,7 @@ header {
   color: black;
 }
 header .intro-text {
-  padding-top: 100px;
+  padding-top: 125px;
   padding-bottom: 50px;
 }
 header .intro-text .intro-lead-in {
@@ -315,7 +306,7 @@ header h3 {
 }
 @media (min-width: 768px) {
   header .intro-text {
-    padding-top: 200px;
+    padding-top: 125px;
     padding-bottom: 200px;
   }
   header .intro-text .intro-lead-in {
@@ -563,7 +554,7 @@ aside.clients img {
 }
 section#contact {
   background-color: #222222;
-  background-image: url('../img/brandLogos/background.jpg');
+  background-image: url('./../img/brandLogos/background.jpg');
   background-size: 1680px;
   background-position: center;
   background-repeat: no-repeat;
