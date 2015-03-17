@@ -78,9 +78,9 @@ gulp.task('publish', function() {
     .pipe(awspublish.gzip())
     .pipe(parallel(publisher.publish(headers), os.cpus().length))
     .pipe(publisher.cache())
-    .pipe(publisher.sync())
     .pipe(awspublish.reporter())
-    .pipe(cloudfront(aws));
+    .pipe(cloudfront(aws))
+    .pipe(publisher.sync());
 });
 
 gulp.task('root', function() {
